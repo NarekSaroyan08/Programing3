@@ -1,9 +1,8 @@
-class Dambldor 
+class Dambldor extends LivingCreature
 {
     constructor(x,y)
     {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.energyDbl = 8;
         this.directions = []
     }

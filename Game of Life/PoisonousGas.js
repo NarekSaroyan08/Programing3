@@ -1,10 +1,9 @@
 
-class PoisonousGas
+class PoisonousGas extends LivingCreature
 {
     constructor(x,y)
     {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.cnt = 0;
         this.size = 300;
         this.directions = []
@@ -76,7 +75,7 @@ class PoisonousGas
         {
             let newX = NewCell[0];
             let newY = NewCell[1];
-            console.log("!!!")
+            // console.log("!!!")
             matrix[newY][newX] = 6;
             this.cnt++;
             let pg = new PoisonousGas(newX,newY)
