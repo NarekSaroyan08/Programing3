@@ -1,5 +1,5 @@
-
-class PoisonousGas extends LivingCreature
+let LivingCreature = require("./LivingCreature");
+module.exports = class PoisonousGas extends LivingCreature
 {
     constructor(x,y)
     {
@@ -70,7 +70,7 @@ class PoisonousGas extends LivingCreature
     mul()
     {
         let EmptyCell = this.chooseCell(0);
-        let NewCell = random(EmptyCell);
+        let NewCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
         if (NewCell)
         {
             let newX = NewCell[0];
@@ -158,7 +158,6 @@ class PoisonousGas extends LivingCreature
             this.energy6 --;
             if (this.cnt >= this.size) 
             {
-                console.log("uu");
                 this.die()
             }
         } 

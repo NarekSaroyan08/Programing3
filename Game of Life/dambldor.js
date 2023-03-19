@@ -1,4 +1,5 @@
-class Dambldor extends LivingCreature
+let LivingCreature = require("./LivingCreature");
+module.exports = class Dambldor extends LivingCreature
 {
     constructor(x,y)
     {
@@ -40,7 +41,7 @@ class Dambldor extends LivingCreature
     mul()
     {
         let EmptyCell = this.chooseCell(0);
-        let NewCell = random(EmptyCell);
+        let NewCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
         if (NewCell && this.energyDbl > 4)
         {
             let newX = NewCell[0];
