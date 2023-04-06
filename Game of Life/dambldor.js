@@ -56,8 +56,8 @@ module.exports = class Dambldor extends LivingCreature
     }
     eat() 
     {
-        let emptyCell = this.chooseCell(3);
-        let newCell = random(emptyCell);
+        let EmptyCell = this.chooseCell(3);
+        let newCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
         if (newCell) 
         {
             this.energyDbl ++;
@@ -89,8 +89,8 @@ module.exports = class Dambldor extends LivingCreature
     }
     move() 
     {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell);
+        let EmptyCell = this.chooseCell(0);
+        let newCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
 
         if (newCell)
         {

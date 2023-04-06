@@ -97,8 +97,8 @@ module.exports = class PoisonousGas extends LivingCreature
     //     }
     eat() 
     {
-        let emptyCell = this.chooseCell(1,2,4,6);
-        let newCell = random(emptyCell);
+        let EmptyCell = this.chooseCell(1,2,4,6);
+        let newCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
         if (newCell) 
         {
             this.cnt++;
@@ -141,8 +141,8 @@ module.exports = class PoisonousGas extends LivingCreature
     }
     move() 
     {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell);
+        let EmptyCell = this.chooseCell(0);
+        let newCell = EmptyCell[Math.floor(Math.random() * EmptyCell.length)];
 
         if (newCell)
         {
