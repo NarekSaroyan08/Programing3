@@ -1,6 +1,147 @@
 body {
-    background-size: cover;
-    background-image: url("fotoDambldor.jpg")
-    width = 500px
-    height = 500px
+    background: #333 url("fotoDambldor.jpg") top/cover;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+tr {
+    border: 1px solid;
+}
+td{
+    height: 65px;
+    text-align: center;
+}
+.black{
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+
+}
+.sum{
+    background-color: rgb(214, 214, 135);
+}
+.graS{
+    background-color: green;
+}
+
+.grEaS{
+    background-color: yellow;
+}
+
+.preS{
+    background-color: black;
+}
+
+.dambS{
+    background-color: aqua;
+}
+
+.BombS{
+    background-color: red;
+}
+.GasS{
+    background-color: #5858d6;
+}
+/* Spring */
+.spr{
+    background-color: #729073;
+}
+.graG{
+    background-color: #056608;
+}
+
+.grEaG{
+    background-color: #B2C248;
+}
+
+.preG{
+    background-color: #8a030b;
+}
+
+.dambG{
+    background-color: #0909FF;
+}
+
+.BombG{
+    background-color: #FDBD01;
+}
+.GasG{
+    background-color: #9DC209;
+}
+/* Autumn */
+.aut{
+    background-color: #fed960;
+}
+.graA{
+    background-color: #1F6357;
+}
+
+.grEaA{
+    background-color: #728C00;
+}
+
+.preA{
+    background-color: #4B0150;
+}
+
+.dambA{
+    background-color: #FFA62F;
+}
+
+.BombA{
+    background-color: #F9DB24;
+}
+.GasA{
+    background-color: #52D017;
+}
+/* Winter */
+.win{
+    background-color: #84efff;
+}
+.graW{
+    background-color: #7BCCB5;
+}
+
+.grEaW{
+    background-color: #01F9C6;
+}
+
+.preW{
+    background-color: #033E3E;
+}
+
+.dambW{
+    background-color: #0AFFFF;
+}
+
+.BombW{
+    background-color: #FFFFFF;
+}
+.GasW{
+    background-color: #00CED1;
+}
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    letter-spacing: 5px;
+  } 
+  .button1{
+      background-color: red;
+  }
+  .button2{
+    background-color: rgb(144, 217, 34);
+}
+.button3{
+    background-color: rgb(3, 156, 212);
 }

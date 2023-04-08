@@ -70,6 +70,7 @@ let Predator = require("./predator");
 let Dambldor = require("./dambldor");
 let PoisonousGas = require("./poisonousgas");
 let Bomb = require("./bomb");
+const { writeHeapSnapshot } = require("v8");
 
 
 sum = 0;
@@ -108,30 +109,30 @@ bombArr = [];
 
 // }
 
-function Create_Object() {
+function Create_Object(gr_1,grEart_2,prd_3,dbl_4,Bb_5,pg_6) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
+            if (matrix[y][x] == gr_1) {
                 var gr = new Grass(x, y)
                 grassArr.push(gr)
             }
-            else if (matrix[y][x] == 2) {
+            else if (matrix[y][x] == grEart_2) {
                 var grEart = new GrassEater(x, y);
                 grassEaterArr.push(grEart);
             }
-            else if (matrix[y][x] == 3) {
+            else if (matrix[y][x] == prd_3) {
                 var prd = new Predator(x, y);
                 predatorArr.push(prd);
             }
-            else if (matrix[y][x] == 4) {
+            else if (matrix[y][x] == dbl_4) {
                 var dbl = new Dambldor(x, y);
                 dambldorArr.push(dbl);
             }
-            // else if (matrix[y][x] == 5) {
-            //     var Bb = new Bomb(x, y);
-            //     bombArr.push(Bb);
-            // }
-            else if (matrix[y][x] == 6) {
+            else if (matrix[y][x] == Bb_5) {
+                var Bb = new Bomb(x, y);
+                bombArr.push(Bb);
+            }
+            else if (matrix[y][x] == pg_6) {
                 var pg = new PoisonousGas(x, y);
                 poisonousGasArr.push(pg);
             }
@@ -139,7 +140,57 @@ function Create_Object() {
     }
     io.emit("send matrix", matrix);
 }
-Create_Object();
+var a = 1;
+var b = 2;
+var c = 3;
+var d = 4;
+var e = 5;
+var f = 6;
+function Weather()
+{
+//    var weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)")
+    var weather = "winter"
+    if (weather == "գարուն" || weather == "spring")
+    {
+        a = 7;
+        b = 8;
+        c = 9;
+        d = 10;
+        e = 11;
+        f = 12; 
+    }
+    else if (weather == "ձմեռ" || weather == "winter")
+    {
+        a = 13;
+        b = 14;
+        c = 15;
+        d = 16;
+        e = 17;
+        f = 18;
+    }
+    else if (weather == "աշուն" || weather == "autumn")
+    {
+        a = 19;
+        b = 20;
+        c = 21;
+        d = 22;
+        e = 23;
+        f = 24;
+    }
+    else 
+    {
+        a = 1;
+        b = 2;
+        c = 3;
+        d = 4;
+        e = 5;
+        f = 6;
+    }
+    Create_Object(a,b,c,d,e,f);
+}
+
+Create_Object(a,b,c,d,e,f);
+
 function GameMove() {
     for (let i in grassArr) {
         grassArr[i].mul();
@@ -156,9 +207,9 @@ function GameMove() {
     for (let i in bombArr) {
         bombArr[i].mul();
     }
-    // for (let i in poisonousGasArr) {
-    //     poisonousGasArr[i].eat();
-    // }
+    for (let i in poisonousGasArr) {
+        poisonousGasArr[i].eat();
+    }
     io.emit("send matrix", matrix);
 }
 
@@ -207,10 +258,30 @@ function bum()
     }
     io.emit("send matrix", matrix);
 }
-
+function onClickDeat() 
+{
+    poisonousGasArr = [];
+    for (let y = 0;y < matrix.length;y++)
+    {
+        for (let x = 0;x < matrix[y].length;x++)
+        {
+            if (matrix[y][x] == 6)
+            {
+                matrix[y][x] = 0;
+            }
+        }
+    }
+    io.emit("send matrix", matrix);
+}
 io.on('connection', function (socket) {
 
     socket.on("send info", function () {
-        bum()
+        bum();
+    });
+    socket.on("send", function () {
+        onClickDeat();
+    });
+    socket.on("send_weather", function () {
+        Weather();
     });
 });
