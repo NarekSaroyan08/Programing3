@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var fs = require('fs')
 
 app.use(express.static("."));
 app.get("/", function (req, res) {
@@ -12,7 +13,59 @@ server.listen(3000, function () {
     console.log("run server");
 })
 
+var a = 1;
+var b = 2;
+var c = 3;
+var d = 4;
+var e = 5;
+var f = 6;
 
+function Weather(weather)
+{
+    // var weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)")
+    // var weather = "winter"
+    if (weather == "գարուն" || weather == "spring")
+    {
+        a = 7;
+        b = 8;
+        c = 9;
+        d = 10;
+        e = 11;
+        f = 12; 
+    }
+    else if (weather == "ձմեռ" || weather == "winter")
+    {
+        a = 13;
+        b = 14;
+        c = 15;
+        d = 16;
+        e = 17;
+        f = 18;
+    }
+    else if (weather == "աշուն" || weather == "autumn")
+    {
+        a = 19;
+        b = 20;
+        c = 21;
+        d = 22;
+        e = 23;
+        f = 24;
+    }
+    else 
+    {
+        a = 1;
+        b = 2;
+        c = 3;
+        d = 4;
+        e = 5;
+        f = 6;
+    }
+    // Create_Object(a,b,c,d,e,f);
+}
+function change_weather(weather)
+{
+    Weather(weather)
+}
 function MatrixGenerator(matrixSize, grass, GrassEater, predator, Dambldor, PoisonousGas, Bomb) {
     var matrix = [];
     for (let i = 0; i < matrixSize; i++) {
@@ -25,39 +78,39 @@ function MatrixGenerator(matrixSize, grass, GrassEater, predator, Dambldor, Pois
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
-        matrix[y][x] = 1;
+        matrix[y][x] = a;
     }
 
     for (let i = 0; i < GrassEater; i++) {
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
-        matrix[y][x] = 2;
+        matrix[y][x] = b;
     }
     for (let i = 0; i < predator; i++) {
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
-        matrix[y][x] = 3;
+        matrix[y][x] = c;
     }
     for (let i = 0; i < Dambldor; i++) {
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
 
-        matrix[y][x] = 4;
+        matrix[y][x] = d;
     }
     for (let i = 0; i < Bomb; i++) {
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
-        matrix[y][x] = 5;
+        matrix[y][x] = e;
     }
     for (let i = 0; i < PoisonousGas; i++) {
         var x = Math.floor(Math.random() * matrixSize);
         var y = Math.floor(Math.random() * matrixSize);
 
-        matrix[y][x] = 6;
+        matrix[y][x] = f;
     }
     io.emit("send matrix", matrix)
     return matrix;
@@ -140,55 +193,54 @@ function Create_Object(gr_1,grEart_2,prd_3,dbl_4,Bb_5,pg_6) {
     }
     io.emit("send matrix", matrix);
 }
-var a = 1;
-var b = 2;
-var c = 3;
-var d = 4;
-var e = 5;
-var f = 6;
-function Weather()
-{
-//    var weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)")
-    var weather = "winter"
-    if (weather == "գարուն" || weather == "spring")
-    {
-        a = 7;
-        b = 8;
-        c = 9;
-        d = 10;
-        e = 11;
-        f = 12; 
-    }
-    else if (weather == "ձմեռ" || weather == "winter")
-    {
-        a = 13;
-        b = 14;
-        c = 15;
-        d = 16;
-        e = 17;
-        f = 18;
-    }
-    else if (weather == "աշուն" || weather == "autumn")
-    {
-        a = 19;
-        b = 20;
-        c = 21;
-        d = 22;
-        e = 23;
-        f = 24;
-    }
-    else 
-    {
-        a = 1;
-        b = 2;
-        c = 3;
-        d = 4;
-        e = 5;
-        f = 6;
-    }
-    Create_Object(a,b,c,d,e,f);
-}
-
+// var a = 1;
+// var b = 2;
+// var c = 3;
+// var d = 4;
+// var e = 5;
+// var f = 6;
+// function Weather()
+// {
+// //    var weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)")
+//     var weather = "winter"
+//     if (weather == "գարուն" || weather == "spring")
+//     {
+//         a = 7;
+//         b = 8;
+//         c = 9;
+//         d = 10;
+//         e = 11;
+//         f = 12; 
+//     }
+//     else if (weather == "ձմեռ" || weather == "winter")
+//     {
+//         a = 13;
+//         b = 14;
+//         c = 15;
+//         d = 16;
+//         e = 17;
+//         f = 18;
+//     }
+//     else if (weather == "աշուն" || weather == "autumn")
+//     {
+//         a = 19;
+//         b = 20;
+//         c = 21;
+//         d = 22;
+//         e = 23;
+//         f = 24;
+//     }
+//     else 
+//     {
+//         a = 1;
+//         b = 2;
+//         c = 3;
+//         d = 4;
+//         e = 5;
+//         f = 6;
+//     }
+//     Create_Object(a,b,c,d,e,f);
+// }
 Create_Object(a,b,c,d,e,f);
 
 function GameMove() {
@@ -261,11 +313,16 @@ function bum()
 function onClickDeat() 
 {
     poisonousGasArr = [];
+    bombArr = [];
     for (let y = 0;y < matrix.length;y++)
     {
         for (let x = 0;x < matrix[y].length;x++)
         {
             if (matrix[y][x] == 6)
+            {
+                matrix[y][x] = 0;
+            }
+            else if (matrix[y][x] == 5)
             {
                 matrix[y][x] = 0;
             }
@@ -281,7 +338,30 @@ io.on('connection', function (socket) {
     socket.on("send", function () {
         onClickDeat();
     });
-    socket.on("send_weather", function () {
-        Weather();
+    socket.on("send_weather", function (weather) {
+        change_weather(weather);
     });
 });
+
+
+var statistics = {};
+
+setInterval(function () {
+
+statistics.grass = grassArr.length;
+
+statistics.grassEater = grassEaterArr.length;
+
+statistics.predator = predatorArr.length;
+
+statistics.dambldor = dambldorArr.length;
+
+statistics.bomb = bombArr.length;
+
+statistics.poisonousGas = poisonousGasArr.length;
+
+fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
+
+})
+
+}, 1000);

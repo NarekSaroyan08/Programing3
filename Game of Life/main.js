@@ -1,6 +1,8 @@
 const socket = io();
 var side = 20;
 var sum = 0;
+// var weather = ""
+// var weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)")
 function setup ()
 {
     var size1 = prompt("pleas input Canvas size1")
@@ -25,6 +27,7 @@ function setup ()
     
 // }
 function connectServer(){
+    
     let btn = document.getElementById("bomb")
     // console.log(btn);
     btn.addEventListener("click",function(){
@@ -37,8 +40,10 @@ function connectServer(){
         socket.emit("send", true)
     })
     let wEather = document.getElementById("weather")
-    wEather.addEventListener("click",function(){
-        socket.emit("send_weather", true)
+    wEather.addEventListener("click",function(weather){
+        weather = prompt("Ներմուծել եղանակը հետևյալ տեսքով (գարուն, ամառ, ձմեռ, աշուն) կամ (spring, summer, winter, autumn) ,(ստանդարտ եղանակը ամառ է !)");
+        
+        socket.emit("send_weather", weather);
     })
 }
 connectServer()
